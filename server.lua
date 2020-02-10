@@ -1,3 +1,8 @@
+local data = {}
+TriggerEvent("redemrp_inventory:getData",function(call)
+    data = call
+end)
+
 RegisterServerEvent('bberry:buyweapon')
 AddEventHandler('bberry:buyweapon', function(price, weapon, level)
 	local _weapon = weapon
@@ -10,6 +15,8 @@ AddEventHandler('bberry:buyweapon', function(price, weapon, level)
 		if user.getMoney() >= price then
 			if ulevel >= _level then
 				user.removeMoney(price)
+				local _weaponHash = GetHashKey(_weapon)
+				data.addItem(_source, _weapon, Config.DefaultAmmo, _weaponHash)
 				TriggerClientEvent('give:weapon', source, weapon)
 			else 
 				TriggerClientEvent('Message:missinglevel', source)
@@ -28,6 +35,9 @@ local _source = source
 	TriggerEvent('redemrp:getPlayerFromId', _source, function(user) 
 		if user.getMoney() >= price then
 			user.removeMoney(price)
+			print(_source);
+			local _sourceHash = GetHashKey(_source)
+			data.addItem(_source, _source, 100, _sourceHash)
 			TriggerClientEvent('give:weaponammo', source)
 		else
 			TriggerClientEvent('Message:cancel', source)

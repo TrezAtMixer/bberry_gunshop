@@ -2,7 +2,8 @@ Config = {}
 
 Config.NoMoney = 'Do not have enough money $'
 Config.Shoptext = 'Press (E) for action with gun shop'
-Config.LevelMissing = 'You do not have enough expirience' 
+Config.LevelMissing = 'You do not have enough experience'
+Config.DefaultAmmo = 250 
 Config.Coords = {
 	vector3(-281.27, 780.74, 119.53),
 	vector3(-5508.1455078125,-2964.3273925781,-0.62878251075745),
